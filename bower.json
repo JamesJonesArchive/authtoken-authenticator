@@ -1,0 +1,42 @@
+{
+  "name": "authtoken-authenticator",
+  "version": "1.0.0",
+  "description": "A WebToken Authenticator Services backed by CAS",
+  "authors": [
+    {
+      "name": "James Jones",
+      "email": "james@mail.usf.edu"
+    },
+    {
+      "name": "Eric Pierce",
+      "email": "epierce@usf.edu"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/USF-IT/e911.git"
+  },
+  "dependencies": {
+    "angular": "1.4.7",
+    "json3": "3.3.2",
+    "es5-shim": "4.4.1",
+    "jquery": "2.1.4",
+    "bootstrap-sass": "3.3.6",
+    "angular-resource": "1.4.7",
+    "angular-sanitize": "1.4.7",
+    "angular-route": "1.4.7",
+    "angular-animate": "1.4.7",
+    "angular-aria": "1.4.7",
+    "components-font-awesome": "4.5.0",
+    "angular-datatables": "^0.5.4"
+  },
+  "devDependencies": {
+    "angular-mocks": "1.4.7",
+    "angular-scenario": "1.4.7",
+    "html5shiv": "3.7.3",
+    "respond": "1.4.2"
+  },
+  "appPath": "assets",
+  "distPath": "public",
+  "templatePath": "templates"
+}

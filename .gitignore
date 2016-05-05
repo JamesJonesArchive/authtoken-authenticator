@@ -1,0 +1,14 @@
+.sass-cache/
+vendor/
+node_modules/
+.idea/
+.sass-cache/
+cache/*
+!cache/README.md
+config/*.local.yml
+coverage/*
+!coverage/README.md
+logs/*
+!logs/README.md
+composer.lock
+public/assets/
