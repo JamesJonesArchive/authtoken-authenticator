@@ -1,14 +1,14 @@
 // Import Bootstrap Compass integration
-@import "bootstrap-sass/bootstrap-compass";
+@import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap-compass";
 
 // Import custom Bootstrap variables
 @import "bootstrap-variables";
 
 // Import Bootstrap for Sass
-@import "bootstrap-sass/bootstrap";
+@import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
 
 //Import Font Awesome
-@import "font-awesome/font-awesome";
+@import "../bower_components/components-font-awesome/scss/font-awesome";
 
 // Typography =================================================================
 $web-font-path: "https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700" !default;
