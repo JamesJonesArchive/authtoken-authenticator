@@ -163,7 +163,7 @@ module.exports = function (grunt) {
                     'composer.json',
                     'composer.lock'
                 ],
-                tasks: ['composer:update'],
+                tasks: ['composer:update']
             }
         }
     });
