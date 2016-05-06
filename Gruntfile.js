@@ -1,18 +1,17 @@
 //Gruntfile
 'use strict';
 
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
     require('load-grunt-tasks')(grunt);
 
     //Initializing the configuration object
     grunt.initConfig({
-
         // Task configuration
         // Task configuration
         clean: {
             options: {
-                "no-write": false,  // Change to true for testing
+                "no-write": false, // Change to true for testing
                 force: true
             },
             build: [
@@ -34,10 +33,17 @@ module.exports = function(grunt) {
                 }
             }
         },
+        composer: {
+            options: {
+                usePhp: false,
+                cwd: '.',
+                flags: ['ignore-platform-reqs']
+            }
+        },
         browserSync: {
             dist: {
                 bsFiles: {
-                    src : [
+                    src: [
                         'public/assets/stylesheets/*.css',
                         'public/assets/javascript/*.js',
                         'public/*.php',
@@ -69,11 +75,11 @@ module.exports = function(grunt) {
                     interlaced: true
                 },
                 files: [{
-                    expand: true,
-                    cwd: 'assets/images/',
-                    src: ['**/*.{png,jpg,gif}'],
-                    dest: 'public/assets/images/'
-                }]
+                        expand: true,
+                        cwd: 'assets/images/',
+                        src: ['**/*.{png,jpg,gif}'],
+                        dest: 'public/assets/images/'
+                    }]
             }
         },
         sass: {
@@ -83,7 +89,7 @@ module.exports = function(grunt) {
                 },
                 files: {
                     //compiling main.scss into main.css
-                    "./public/assets/stylesheets/main.css":"./assets/stylesheets/styles.scss"
+                    "./public/assets/stylesheets/main.css": "./assets/stylesheets/styles.scss"
                 }
             }
         },
@@ -136,21 +142,28 @@ module.exports = function(grunt) {
                     //watched files
                     './assets/javascript/main.js'
                 ],
-                tasks: ['concat:main_js','uglify:frontend'],     //tasks to run
+                tasks: ['concat:main_js', 'uglify:frontend'], //tasks to run
                 options: {
                     livereload: true                        //reloads the browser
                 }
             },
             sass: {
-                files: ['./app/assets/stylesheets/*.scss', './app/assets/stylesheets/**/*.scss'],  //watched files
-                tasks: ['sass'],                          //tasks to run
+                files: ['./app/assets/stylesheets/*.scss', './app/assets/stylesheets/**/*.scss'], //watched files
+                tasks: ['sass'], //tasks to run
                 options: {
                     livereload: true                        //reloads the browser
                 }
             },
             tests: {
-                files: ['public/src/*.php'],  //the task will run only when you save files in this location
+                files: ['public/src/*.php'], //the task will run only when you save files in this location
                 tasks: ['phpunit']
+            },
+            composer_json: {
+                files: [
+                    'composer.json',
+                    'composer.lock'
+                ],
+                tasks: ['composer:update'],
             }
         }
     });
@@ -159,6 +172,7 @@ module.exports = function(grunt) {
     // Task definition
     grunt.registerTask('default', ['build']);
     grunt.registerTask('build', [
+        'composer:update',
         'phpunit',
         'clean',
         'imagemin',
@@ -169,7 +183,7 @@ module.exports = function(grunt) {
     ]);
     grunt.registerTask('serve', [
         'build',
-        'php:dist',         // Start PHP Server
+        'php:dist', // Start PHP Server
         'browserSync:dist', // Using the php instance as a proxy
         'watch'             // Any other watch tasks you want to run
     ]);
