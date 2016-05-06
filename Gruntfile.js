@@ -99,11 +99,16 @@ module.exports = function (grunt) {
                     // includes files within path
                     {
                         expand: true,
-                        flatten: true,
-                        src: ['./assets/fonts/**'],
-                        dest: './public/assets/fonts',
-                        filter: 'isFile'
-                    }
+                        cwd: 'assets/bower_components/bootstrap-sass/assets/fonts/bootstrap',
+                        src: '**',
+                        dest: 'public/assets/fonts'
+                    },
+                    {
+                        expand: true,
+                        cwd: 'assets/bower_components/components-font-awesome',
+                        src: 'fonts/*',
+                        dest: 'public/assets'
+                    }                    
                 ],
             }
         },
