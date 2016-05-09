@@ -87,10 +87,14 @@ module.exports = function (grunt) {
                 options: {
                     style: 'compressed'
                 },
-                files: {
-                    //compiling main.scss into main.css
-                    "./public/assets/stylesheets/main.css": "./assets/stylesheets/styles.scss"
-                }
+                files: [{
+                    expand: true,
+                    cwd: 'assets/stylesheets',
+                    src: ['*.scss'],
+                    dest: './public/assets/stylesheets',
+                    // dest: '.tmp/sass/assets/stylesheets',
+                    ext: '.css'
+                }]
             }
         },
         copy: {
@@ -109,7 +113,7 @@ module.exports = function (grunt) {
                         src: 'fonts/*',
                         dest: 'public/assets'
                     }                    
-                ],
+                ]
             }
         },
         concat: {
@@ -127,7 +131,7 @@ module.exports = function (grunt) {
             },
             main_js: {
                 files: {
-                    './public/assets/javascript/main.js': './public/assets/javascript/main.js',
+                    './public/assets/javascript/main.js': './public/assets/javascript/main.js'
                 }
             }
         },
