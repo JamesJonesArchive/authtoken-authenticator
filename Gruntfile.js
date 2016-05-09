@@ -157,7 +157,7 @@ module.exports = function (grunt) {
                 }
             },
             sass: {
-                files: ['./app/assets/stylesheets/*.scss', './app/assets/stylesheets/**/*.scss'], //watched files
+                files: ['./assets/stylesheets/*.scss', './assets/stylesheets/**/*.scss'], //watched files
                 tasks: ['sass'], //tasks to run
                 options: {
                     livereload: true                        //reloads the browser
