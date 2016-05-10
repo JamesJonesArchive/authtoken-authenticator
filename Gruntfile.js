@@ -20,6 +20,9 @@ module.exports = function (grunt) {
                 'logs/*',
                 'coverage/*',
                 '!**/README.md'
+            ],
+            templatewrapper: [
+                'templates/include/*'
             ]
         },
         php: {
@@ -114,6 +117,16 @@ module.exports = function (grunt) {
                         dest: 'public/assets'
                     }                    
                 ]
+            },
+            templatewrapper: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'assets/templates/include',
+                        src: '**',
+                        dest: 'templates/include'
+                    }
+                ]
             }
         },
         concat: {
@@ -180,6 +193,17 @@ module.exports = function (grunt) {
                 }
             }
         }, 
+        // Performs rewrites based on filerev and the useminPrepare configuration
+        usemin: {
+            html: [
+                'templates/include/header.html',
+                'templates/include/footer.html'
+            ],
+            css: ['public/assets/stylesheets/{,*/}*.css'],
+            options: {
+                assetsDirs: ['public/assets','public/assets/images','public/assets/fonts','public/assets/stylesheets','public/assets/javascript']
+            }
+        },
         watch: {
             main_js: {
                 files: [
@@ -218,7 +242,7 @@ module.exports = function (grunt) {
     grunt.registerTask('build', [
         'composer:update',
         'phpunit',
-        'clean',
+        'clean:build',
         'wiredep',
         'useminPrepare',
         'imagemin',
@@ -226,7 +250,10 @@ module.exports = function (grunt) {
         'sass',
         'cssmin',
         'concat',
-        'uglify'
+        'uglify',
+        'clean:templatewrapper',
+        'copy:templatewrapper',
+        'usemin'
     ]);
     grunt.registerTask('serve', [
         'build',
