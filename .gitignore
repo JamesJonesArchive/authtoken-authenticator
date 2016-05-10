@@ -12,3 +12,4 @@ logs/*
 !logs/README.md
 composer.lock
 public/assets/
+/.tmp/

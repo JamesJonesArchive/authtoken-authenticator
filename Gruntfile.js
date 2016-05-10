@@ -91,8 +91,8 @@ module.exports = function (grunt) {
                     expand: true,
                     cwd: 'assets/stylesheets',
                     src: ['*.scss'],
-                    dest: './public/assets/stylesheets',
-                    // dest: '.tmp/sass/assets/stylesheets',
+                    // dest: './public/assets/stylesheets',
+                    dest: '.tmp/sass/assets/stylesheets',
                     ext: '.css'
                 }]
             }
@@ -159,6 +159,27 @@ module.exports = function (grunt) {
                 exclude: [  'bower_components/components-font-awesome/css/font-awesome.css' ]
             }
         }, 
+        // Reads HTML for usemin blocks to enable smart builds that automatically
+        // concat, minify and revision files. Creates configurations in memory so
+        // additional tasks can operate on them
+        useminPrepare: {
+            html: [
+                './assets/templates/include/header.html',
+                './assets/templates/include/footer.html'
+            ],
+            options: {
+                dest: './public',
+                flow: {
+                    html: {
+                        steps: {
+                            js: ['concat', 'uglifyjs'],
+                            css: ['cssmin']
+                        },
+                        post: {}
+                    }
+                }
+            }
+        }, 
         watch: {
             main_js: {
                 files: [
@@ -199,9 +220,11 @@ module.exports = function (grunt) {
         'phpunit',
         'clean',
         'wiredep',
+        'useminPrepare',
         'imagemin',
         'copy',
         'sass',
+        'cssmin',
         'concat',
         'uglify'
     ]);
