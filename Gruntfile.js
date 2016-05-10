@@ -98,7 +98,7 @@ module.exports = function (grunt) {
             }
         },
         copy: {
-            main: {
+            fonts: {
                 files: [
                     // includes files within path
                     {
@@ -222,7 +222,7 @@ module.exports = function (grunt) {
         'wiredep',
         'useminPrepare',
         'imagemin',
-        'copy',
+        'copy:fonts',
         'sass',
         'cssmin',
         'concat',
