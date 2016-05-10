@@ -145,6 +145,20 @@ module.exports = function (grunt) {
                 coverageHtml: 'coverage'
             }
         },
+        // Automatically inject Bower components into the app
+        wiredep: {
+            options: {
+                cwd: ''
+            },
+            app: {
+                src: [
+                    './assets/templates/include/header.html',
+                    './assets/templates/include/footer.html'
+                ],
+                ignorePath:  /\.\.\/\.\.\//,
+                exclude: [  'bower_components/components-font-awesome/css/font-awesome.css' ]
+            }
+        }, 
         watch: {
             main_js: {
                 files: [
@@ -184,6 +198,7 @@ module.exports = function (grunt) {
         'composer:update',
         'phpunit',
         'clean',
+        'wiredep',
         'imagemin',
         'copy',
         'sass',
