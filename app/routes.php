@@ -11,7 +11,7 @@ $app->get('/', 'AuthTransfer\AuthToken\Action\HomeAction:dispatch')
     ->setName('homepage');
 
 // Display a named template view
-$app->get('/view/{name}', 'AuthTransfer\AuthToken\Action\HomeAction:getView')
+$app->get('/views/{name}', 'AuthTransfer\AuthToken\Action\HomeAction:getView')
     ->setName('getView');
 
 // Display images from a webservice.  The album id piece of URL is optional.

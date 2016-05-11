@@ -29,7 +29,7 @@ slimSettings:
         '/health_check': # Health check is allowed without authentication
           authN: permitAll
           authZ: permitAll
-        '/view/home': # Allow home view without authentication
+        '/views/home': # Allow home view without authentication
           authN: permitAll
           authZ: permitAll
         '/**': # All other pages require CAS

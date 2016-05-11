@@ -14,12 +14,16 @@
 
     angular
     .module('authtokenauthenticatorApp', [
-        'ngRoute'
+        'ngResource',
+        'ngSanitize',
+        'ngRoute',
+        'ngAnimate',
+        'ngAria'
     ])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: '/view/home',
+                templateUrl: '/views/home',
                 controller: 'atamainCtrl'
             })
             .otherwise({
