@@ -185,7 +185,8 @@ module.exports = function (grunt) {
                 flow: {
                     html: {
                         steps: {
-                            js: ['concat', 'uglifyjs'],
+                            // js: ['concat', 'uglifyjs'],
+                            js: ['concat'],
                             css: ['cssmin']
                         },
                         post: {}
@@ -229,6 +230,16 @@ module.exports = function (grunt) {
                     'composer.lock'
                 ],
                 tasks: ['composer:update']
+            },
+            livereload: {
+                options: {
+                  livereload: true
+                },
+                files: [
+                  'assets/{,*/}*.html',
+                  'assets/stylesheets/{,*/}*.css',
+                  'assets/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+                ]
             }
         }
     });
@@ -247,7 +258,7 @@ module.exports = function (grunt) {
         'sass',
         'cssmin',
         'concat:generated',
-        'uglify:generated',
+        // 'uglify:generated',
         'clean:templatewrapper',
         'copy:templatewrapper',
         'usemin'

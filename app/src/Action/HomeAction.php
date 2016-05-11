@@ -63,6 +63,13 @@ final class HomeAction
             'page_title' => 'AuthTransfer\AuthToken | Main'  // This will used in the <title> element on the page
         ];
 
-        return $this->view->render($response, 'home.html', $view_attr);
+        // return $this->view->render($response, 'home.html', $view_attr);
+        return $this->view->render($response, 'index.html', $view_attr);
+    }
+    
+    public function getView(Request $request, Response $response, $args) {
+        $name = $args['name'] ?? $request->getQueryParams()['name'] ?? 'home';
+        
+        return $this->view->render($response, $name . '.html');
     }
 }
