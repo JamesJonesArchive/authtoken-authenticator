@@ -12,4 +12,5 @@ logs/*
 !logs/README.md
 composer.lock
 public/assets/
+app/bower_components/
 /.tmp/
