@@ -13,4 +13,6 @@ logs/*
 composer.lock
 public/assets/
 app/bower_components/
+npm-debug.log
+/nbproject/
 /.tmp/
