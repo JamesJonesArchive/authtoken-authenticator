@@ -18,7 +18,8 @@
         'ngSanitize',
         'ngRoute',
         'ngAnimate',
-        'ngAria'
+        'ngAria',
+        'UsfCAStokenAuth'
     ])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
