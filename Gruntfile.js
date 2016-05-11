@@ -205,14 +205,11 @@ module.exports = function (grunt) {
             }
         },
         watch: {
-            main_js: {
-                files: [
-                    //watched files
-                    './assets/javascript/main.js'
-                ],
-                tasks: ['concat:main_js', 'uglify:frontend'], //tasks to run
+            js: {
+                files: ['./assets/javascript/{,*/}*.js'],
+                tasks: ['useminPrepare','concat:generated','uglify:generated'],
                 options: {
-                    livereload: true                        //reloads the browser
+                  livereload: true                        //reloads the browser
                 }
             },
             sass: {
@@ -223,7 +220,7 @@ module.exports = function (grunt) {
                 }
             },
             tests: {
-                files: ['public/src/*.php'], //the task will run only when you save files in this location
+                files: ['app/src/*.php'], //the task will run only when you save files in this location
                 tasks: ['phpunit']
             },
             composer_json: {
