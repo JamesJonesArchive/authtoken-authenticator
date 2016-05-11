@@ -12,7 +12,7 @@ logs/*
 !logs/README.md
 composer.lock
 public/assets/
-app/bower_components/
+assets/bower_components/
 npm-debug.log
 /nbproject/
 /.tmp/
