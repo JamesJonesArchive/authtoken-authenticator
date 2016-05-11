@@ -249,8 +249,8 @@ module.exports = function (grunt) {
         'copy:fonts',
         'sass',
         'cssmin',
-        'concat',
-        'uglify',
+        'concat:generated',
+        'uglify:generated',
         'clean:templatewrapper',
         'copy:templatewrapper',
         'usemin'
