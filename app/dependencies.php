@@ -56,7 +56,9 @@ $container['logger'] = function ($c) use ($settings) {
 $container['myService'] =  function ($c) {
     return new \USF\IdM\AuthTransfer\AuthToken\Service\ExampleService($c->logger, $c->settings);
 };
-
+$container['webToken'] =  function ($c) {
+    return new \USF\IdM\AuthTransfer\AuthToken\Service\AuthTokenService($c->logger, $c->settings);
+};
 /**
  * -----------------------------------------------------------------------------
  * Action factories (Controllers)
@@ -77,4 +79,9 @@ $container['AuthTransfer\AuthToken\Action\HomeAction'] = function ($c) {
 //// Example Controller with a Service
 $container['AuthTransfer\AuthToken\Action\ExampleAction'] = function ($c) {
     return new \USF\IdM\AuthTransfer\AuthToken\Action\ExampleAction($c->view, $c->logger, $c->settings, $c->myService);
+};
+
+//// WebToken Controller with a Service
+$container['AuthTransfer\WebToken\Action\WebTokenAction'] = function ($c) {
+    return new \USF\IdM\AuthTransfer\AuthToken\Action\AuthTokenAction($c->view, $c->logger, $c->settings, $c->webToken);
 };

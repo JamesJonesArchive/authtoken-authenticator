@@ -27,6 +27,15 @@
                 templateUrl: '/views/home',
                 controller: 'atamainCtrl'
             })
+            .when('/admin', {
+                templateUrl: 'views/admin',
+                controller: 'ataadminCtrl',
+                resolve: {
+                    isLogged: ['$resource', function($resource){
+                        return $resource('views/admin',{},{ 'getView': { method: 'GET', tokenKey: 'adminKey'} }).getView({}).$promise;
+                    }] 
+                }
+            })
             .otherwise({
                 redirectTo: '/'
             });
